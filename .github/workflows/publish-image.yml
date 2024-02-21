@@ -72,7 +72,7 @@ jobs:
                     file: ./Dockerfile
                     push: true
                     cache-from: type=gha
-                    tags: ${{ inputs.tags || steps.meta.outputs.tags }}
+                    tags: ${{ env.REGISTRY }}/${{ github.repository }}/frontend:${{ github.sha }}
                     platforms: ${{ inputs.platforms }}
                     labels: ${{ steps.meta.outputs.labels }}
                     build-args: |
