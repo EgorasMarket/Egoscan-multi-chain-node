@@ -1,5 +1,5 @@
 import type { GridProps } from '@chakra-ui/react';
-import { Box, Grid, Flex, Text, Link, VStack, Skeleton } from '@chakra-ui/react';
+import { Box, Grid, Flex, Link, Skeleton } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
@@ -7,85 +7,85 @@ import type { CustomLinksGroup } from 'types/footerLinks';
 
 import config from 'configs/app';
 import type { ResourceError } from 'lib/api/resources';
-import useApiQuery from 'lib/api/useApiQuery';
+// import useApiQuery from 'lib/api/useApiQuery';
 import useFetch from 'lib/hooks/useFetch';
-import useIssueUrl from 'lib/hooks/useIssueUrl';
+// import useIssueUrl from 'lib/hooks/useIssueUrl';
 import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 
-import FooterLinkItem from './FooterLinkItem';
+// import FooterLinkItem from './FooterLinkItem';
 import IntTxsIndexingStatus from './IntTxsIndexingStatus';
-import getApiVersionUrl from './utils/getApiVersionUrl';
+// import getApiVersionUrl from './utils/getApiVersionUrl';
 
 const MAX_LINKS_COLUMNS = 4;
 
-const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config.UI.footer.frontendVersion }`;
-const FRONT_COMMIT_URL = `https://github.com/blockscout/frontend/commit/${ config.UI.footer.frontendCommit }`;
+// const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config.UI.footer.frontendVersion }`;
+// const FRONT_COMMIT_URL = `https://github.com/blockscout/frontend/commit/${ config.UI.footer.frontendCommit }`;
 
 const Footer = () => {
 
-  const { data: backendVersionData } = useApiQuery('config_backend_version', {
-    queryOptions: {
-      staleTime: Infinity,
-    },
-  });
-  const apiVersionUrl = getApiVersionUrl(backendVersionData?.backend_version);
-  const issueUrl = useIssueUrl(backendVersionData?.backend_version);
-  const BLOCKSCOUT_LINKS = [
-    {
-      icon: 'edit' as const,
-      iconSize: '16px',
-      text: 'Submit an issue',
-      url: issueUrl,
-    },
-    {
-      icon: 'social/canny' as const,
-      iconSize: '20px',
-      text: 'Feature request',
-      url: 'https://blockscout.canny.io/feature-requests',
-    },
-    {
-      icon: 'social/git' as const,
-      iconSize: '18px',
-      text: 'Contribute',
-      url: 'https://github.com/blockscout/blockscout',
-    },
-    {
-      icon: 'social/tweet' as const,
-      iconSize: '18px',
-      text: 'Twitter',
-      url: 'https://www.twitter.com/blockscoutcom',
-    },
-    {
-      icon: 'social/discord' as const,
-      iconSize: '24px',
-      text: 'Discord',
-      url: 'https://discord.gg/blockscout',
-    },
-    {
-      icon: 'discussions' as const,
-      iconSize: '20px',
-      text: 'Discussions',
-      url: 'https://github.com/orgs/blockscout/discussions',
-    },
-    {
-      icon: 'donate' as const,
-      iconSize: '20px',
-      text: 'Donate',
-      url: 'https://github.com/sponsors/blockscout',
-    },
-  ];
+  // const { data: backendVersionData } = useApiQuery('config_backend_version', {
+  //   queryOptions: {
+  //     staleTime: Infinity,
+  //   },
+  // });
+  // const apiVersionUrl = getApiVersionUrl(backendVersionData?.backend_version);
+  // const issueUrl = useIssueUrl(backendVersionData?.backend_version);
+  // const BLOCKSCOUT_LINKS_OLD= [
+  //   {
+  //     icon: 'edit' as const,
+  //     iconSize: '16px',
+  //     text: 'Submit an issue',
+  //     url: issueUrl,
+  //   },
+  //   {
+  //     icon: 'social/canny' as const,
+  //     iconSize: '20px',
+  //     text: 'Feature request',
+  //     url: 'https://blockscout.canny.io/feature-requests',
+  //   },
+  //   {
+  //     icon: 'social/git' as const,
+  //     iconSize: '18px',
+  //     text: 'Contribute',
+  //     url: 'https://github.com/blockscout/blockscout',
+  //   },
+  //   {
+  //     icon: 'social/tweet' as const,
+  //     iconSize: '18px',
+  //     text: 'Twitter',
+  //     url: 'https://www.twitter.com/blockscoutcom',
+  //   },
+  //   {
+  //     icon: 'social/discord' as const,
+  //     iconSize: '24px',
+  //     text: 'Discord',
+  //     url: 'https://discord.gg/blockscout',
+  //   },
+  //   {
+  //     icon: 'discussions' as const,
+  //     iconSize: '20px',
+  //     text: 'Discussions',
+  //     url: 'https://github.com/orgs/blockscout/discussions',
+  //   },
+  //   {
+  //     icon: 'donate' as const,
+  //     iconSize: '20px',
+  //     text: 'Donate',
+  //     url: 'https://github.com/sponsors/blockscout',
+  //   },
+  // ];
+  const BLOCKSCOUT_LINKS = [ {} ];
+  // const frontendLink = (() => {
+  //   if (config.UI.footer.frontendVersion) {
+  //     return <Link href={ FRONT_VERSION_URL } target="_blank">{ config.UI.footer.frontendVersion }</Link>;
+  //   }
 
-  const frontendLink = (() => {
-    if (config.UI.footer.frontendVersion) {
-      return <Link href={ FRONT_VERSION_URL } target="_blank">{ config.UI.footer.frontendVersion }</Link>;
-    }
+  //   if (config.UI.footer.frontendCommit) {
+  //     return <Link href={ FRONT_COMMIT_URL } target="_blank">{ config.UI.footer.frontendCommit }</Link>;
+  //   }
 
-    if (config.UI.footer.frontendCommit) {
-      return <Link href={ FRONT_COMMIT_URL } target="_blank">{ config.UI.footer.frontendCommit }</Link>;
-    }
-
-    return null;
-  })();
+  //   return null;
+  // })();
 
   const fetch = useFetch();
 
@@ -118,11 +118,9 @@ const Footer = () => {
   const renderProjectInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
     return (
       <Box gridArea={ gridArea }>
-        <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link>
-        <Text mt={ 3 } fontSize="xs">
-          Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.
-        </Text>
-        <VStack spacing={ 1 } mt={ 6 } alignItems="start">
+        <Link fontSize="xs" href="https://www.egoscan.io">Egoscan.io</Link>
+
+        { /* <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (
             <Text fontSize="xs">
               Backend: <Link href={ apiVersionUrl } target="_blank">{ backendVersionData?.backend_version }</Link>
@@ -133,10 +131,10 @@ const Footer = () => {
               Frontend: { frontendLink }
             </Text>
           ) }
-        </VStack>
+        </VStack> */ }
       </Box>
     );
-  }, [ apiVersionUrl, backendVersionData?.backend_version, frontendLink ]);
+  }, [ ]);
 
   const containerProps: GridProps = {
     as: 'footer',
@@ -168,16 +166,16 @@ const Footer = () => {
         >
           {
             ([
-              { title: 'Blockscout', links: BLOCKSCOUT_LINKS },
+              { title: 'Egochain', links: BLOCKSCOUT_LINKS },
               ...(linksData || []),
             ])
               .slice(0, colNum)
               .map(linkGroup => (
                 <Box key={ linkGroup.title }>
                   <Skeleton fontWeight={ 500 } mb={ 3 } display="inline-block" isLoaded={ !isPlaceholderData }>{ linkGroup.title }</Skeleton>
-                  <VStack spacing={ 1 } alignItems="start">
-                    { linkGroup.links.map(link => <FooterLinkItem { ...link } key={ link.text } isLoading={ isPlaceholderData }/>) }
-                  </VStack>
+                  { /* <VStack spacing={ 1 } alignItems="start">
+                    { linkGroup.links.map(link => <FooterLinkItem { ...link } key={0 } isLoading={ isPlaceholderData }/>) }
+                  </VStack> */ }
                 </Box>
               ))
           }
@@ -218,7 +216,7 @@ const Footer = () => {
         justifyContent={{ lg: 'flex-end' }}
         mt={{ base: 8, lg: 0 }}
       >
-        { BLOCKSCOUT_LINKS.map(link => <FooterLinkItem { ...link } key={ link.text }/>) }
+        { /* { BLOCKSCOUT_LINKS.map(link => <FooterLinkItem { ...link } key={ link.text }/>) } */ }
       </Grid>
     </Grid>
   );
