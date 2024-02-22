@@ -38,7 +38,7 @@ const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading
 
   const bgColor = useColorModeValue('blue.50', 'blue.800');
   const loadingBgColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.50');
-  const infoColor = useColorModeValue('gray.600', 'gray.400');
+  const infoColor = useColorModeValue('blue.600', 'blue.400');
 
   return (
     <Flex
